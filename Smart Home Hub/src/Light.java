@@ -1,6 +1,6 @@
-/* Concrete class for a Thermostat type device; implements IDevice interface */
+/// Concrete class for a Light type device; implements IDevice interface
 
-public class Thermostat implements IDevice {
+public class Light implements IDevice {
 	
 	private static final long serialVersionUID = 1L;
 	
@@ -8,13 +8,12 @@ public class Thermostat implements IDevice {
 	private int id;
 	private String name;
 	private boolean isOn;
-	private double temperature; // Unique attribute for Thermostat
 
-	public Thermostat(int id, String name) {
+	// Constructor: Sets up the light with a specific ID and Name
+	public Light(int id, String name) {
 		this.id = id;
 		this.name = name;
 		this.isOn = false; // Default state is OFF
-		this.temperature = 21.38;
 	}
 
 	@Override
@@ -32,11 +31,6 @@ public class Thermostat implements IDevice {
 		return isOn;
 	}
 
-	// Getter for the unique temperature field
-	public double getTemperature() {
-		return temperature;
-	}
-
 	@Override
 	public int getId() {
 		return id;
@@ -49,21 +43,21 @@ public class Thermostat implements IDevice {
 
 	@Override
 	public String getType() {
-		return "Thermostat";
+		return "Light";
 	}
-
+	
 	@Override
 	public String getStatusString() {
-		return isOn ? "Active (" + temperature + "°C)" : "Standby"; // For a thermostat, we can have it active/standby states, and also show temperature
+		return isOn ? "ON" : "OFF"; // For a light, it can either be ON or OFF
 	}
-
+	
 	@Override
 	public void setName(String name) {
 		this.name = name;
 	}
-	
+
 	@Override
 	public String toString() {
-		return "Thermostat [ID=" + id + ", Name=" + name + ", Temp=" + temperature + "]";
+		return "Light [ID=" + id + ", Name=" + name + ", On=" + isOn + "]";
 	}
 }
